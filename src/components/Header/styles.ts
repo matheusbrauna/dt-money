@@ -23,7 +23,6 @@ export const NewTransactionButton = styled('button', {
   fontWeight: 'bold',
   padding: '0 1.25rem',
   borderRadius: 6,
-  cursor: 'pointer',
   '&:hover': {
     background: '$green-700',
     transition: 'background-color 0.2s',

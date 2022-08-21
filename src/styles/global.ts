@@ -13,8 +13,14 @@ export const globalStyles = globalCss({
     boxShadow: `0 0 0 2px ${theme.colors['green-500']}`,
   },
   body: {
-    backgroundColor: theme.colors['gray-800'],
-    color: theme.colors['gray-100'],
+    backgroundColor: '$gray-800',
+    color: '$gray-100',
     fontSmooth: 'always',
+    fontSize: '1rem',
+  },
+
+  button: {
+    fontSize: '1rem',
+    cursor: 'pointer',
   },
 })
