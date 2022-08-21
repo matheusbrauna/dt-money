@@ -27,8 +27,8 @@ export const SearchFormContainer = styled('form', {
     borderRadius: 6,
 
     '&:hover': {
-      background: 'green-500',
-      borderColor: 'green-500',
+      background: '$green-500',
+      borderColor: '$green-500',
       color: '$white',
       transition: 'background-color 0.2s, color 0.2s, border-color 0.2s',
     },
