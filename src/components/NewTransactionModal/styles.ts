@@ -49,7 +49,12 @@ export const Content = styled(Dialog.Content, {
     borderRadius: 6,
     marginTop: '1.5rem',
 
-    '&:hover': {
+    '&:disabled': {
+      opacity: 0.6,
+      cursor: 'not-allowed',
+    },
+
+    '&:not(:disabled):hover': {
       backgroundColor: '$green-700',
       transition: 'background-color 0.2s',
     },
@@ -98,6 +103,11 @@ export const TransactionTypeButton = styled(RadioGroup.Item, {
     svg: {
       color: '$white',
     },
+  },
+
+  '&:disabled': {
+    opacity: 0.6,
+    cursor: 'not-allowed',
   },
 
   variants: {

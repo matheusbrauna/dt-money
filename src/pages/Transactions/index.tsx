@@ -1,14 +1,16 @@
+import { useContextSelector } from 'use-context-selector'
 import { Header } from '../../components/Header'
 import { Summary } from '../../components/Summary'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { SearchForm } from './components/SearchForm'
-import {
-  PriceHighlight,
-  Td,
-  TransactionsContainer,
-  TransactionsTable,
-} from './styles'
+import { TransactionsData } from './components/TransactionsData'
+import { TransactionsContainer, TransactionsTable } from './styles'
 
 export function Transactions() {
+  const transactions = useContextSelector(TransactionsContext, (context) => {
+    return context.transactions
+  })
+
   return (
     <div>
       <Header />
@@ -18,22 +20,12 @@ export function Transactions() {
         <SearchForm />
         <TransactionsTable>
           <tbody>
-            <tr>
-              <Td>Desenvolvimento de site</Td>
-              <Td>
-                <PriceHighlight color="income">R$ 12.000,00</PriceHighlight>
-              </Td>
-              <Td>Venda</Td>
-              <Td>13/04/2022</Td>
-            </tr>
-            <tr>
-              <Td>Hamburguer</Td>
-              <Td>
-                <PriceHighlight color="outcome">- R$ 59,00</PriceHighlight>
-              </Td>
-              <Td>Alimentação</Td>
-              <Td>10/04/2022</Td>
-            </tr>
+            {transactions.map((transaction) => (
+              <TransactionsData
+                transaction={transaction}
+                key={transaction.id}
+              />
+            ))}
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>

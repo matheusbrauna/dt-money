@@ -1,9 +1,13 @@
 import { SummaryCard, SummaryContainer } from './styles'
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
 import { theme } from '../../../stitches.config'
+import { priceFormatter } from '../../utils/formatter'
+import { useSummary } from '../../hooks/useSummary'
 
 export function Summary() {
   const { colors } = theme
+  const summary = useSummary()
+
   return (
     <SummaryContainer>
       <SummaryCard>
@@ -12,7 +16,7 @@ export function Summary() {
           <ArrowCircleUp size={32} color={String(colors['green-500'])} />
         </header>
 
-        <strong>R$ 17.400,00</strong>
+        <strong>{priceFormatter.format(summary.income)}</strong>
       </SummaryCard>
 
       <SummaryCard>
@@ -21,7 +25,7 @@ export function Summary() {
           <ArrowCircleDown size={32} color={String(colors['red-500'])} />
         </header>
 
-        <strong>R$ 17.400,00</strong>
+        <strong>{priceFormatter.format(summary.outcome)}</strong>
       </SummaryCard>
 
       <SummaryCard color="green">
@@ -30,7 +34,7 @@ export function Summary() {
           <CurrencyDollar size={32} color={String(colors.white)} />
         </header>
 
-        <strong>R$ 17.400,00</strong>
+        <strong>{priceFormatter.format(summary.total)}</strong>
       </SummaryCard>
     </SummaryContainer>
   )
